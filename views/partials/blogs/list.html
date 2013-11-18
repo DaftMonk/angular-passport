@@ -1,0 +1,13 @@
+
+<section ng-init="find()">
+    <div ng-repeat="blog in blogs">
+        <h1><a ng-href="blogs/{{blog._id}}">{{blog.title}}</a></h1>
+        <p>{{blog.content}}</p>
+        <div>
+            <span class="badge badge-success">Posted {{blog.created | date:'medium'}}</span>
+            <div class="pull-right"><span class="badge badge-success">Posted by {{blog.creator.username}}</span></div>
+        </div>
+        <hr>
+    </div>
+    <h1 ng-hide="!blogs || blogs.length">No blogs yet. <br> Why don't you <a href="/blogs/create">Create One</a>?</h1>
+</section>

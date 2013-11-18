@@ -1,0 +1,30 @@
+<div class="navbar navbar-default" ng-controller="NavbarCtrl">
+    <div class="navbar-header"><a class="navbar-brand" href="#" name="top">Angular Passport</a>
+    </div>
+    <div class="nav navbar-nav">
+        <ul class="nav navbar-nav">
+            <li ng-repeat="item in menu" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">
+                <a href="/{{item.link}}">{{item.title}}</a>
+            </li>
+            <li ng-repeat="item in authMenu" ng-show="currentUser" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">
+                <a href="/{{item.link}}">{{item.title}}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="nav navbar-nav pull-right">
+        <ul class="nav navbar-nav" ng-hide="currentUser">
+            <li><a href="/login">Log In</a></li>
+            <li><a href="/signup">Sign up</a></li>
+        </ul>
+        <ul class="nav navbar-nav" ng-show="currentUser">
+            <li class="dropdown">
+                <a class="dropdown-toggle">Welcome, {{ currentUser.username }} <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/logout"><i class="glyphicon-off"></i> Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!--/.navbar-collapse -->
+</div>
+<!--/.navbar -->
