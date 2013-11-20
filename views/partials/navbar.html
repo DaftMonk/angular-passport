@@ -6,7 +6,7 @@
             <li ng-repeat="item in menu" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">
                 <a href="/{{item.link}}">{{item.title}}</a>
             </li>
-            <li ng-repeat="item in authMenu" ng-show="currentUser" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">
+            <li ng-repeat="item in menu" ng-show="currentUser" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">
                 <a href="/{{item.link}}">{{item.title}}</a>
             </li>
         </ul>
@@ -20,7 +20,7 @@
             <li class="dropdown">
                 <a class="dropdown-toggle">Welcome, {{ currentUser.username }} <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="/logout"><i class="glyphicon-off"></i> Logout</a></li>
+                    <li><a ng-click="logout()"><span class="glyphicon-log-out"></span> Logout</a></li>
                 </ul>
             </li>
         </ul>

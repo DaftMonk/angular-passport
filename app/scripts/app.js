@@ -34,10 +34,6 @@ angular.module('angularPassportApp', [
         templateUrl: 'partials/login.html',
         controller: 'LoginCtrl'
       })
-      .when('/logout', {
-        templateUrl: 'partials/logout.html',
-        controller: 'LogoutCtrl'
-      })
       .when('/signup', {
         templateUrl: 'partials/signup.html',
         controller: 'SignupCtrl'
