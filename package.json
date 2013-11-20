@@ -8,7 +8,8 @@
     "mongoose": "~3.5.5",
     "bcrypt": "~0.7.3",
     "ejs": "~0.8.4",
-    "underscore": "~1.5.2"
+    "underscore": "~1.5.2",
+    "connect-mongo": "~0.4.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
