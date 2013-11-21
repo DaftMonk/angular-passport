@@ -5,7 +5,6 @@ angular.module('angularPassportApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'ui.bootstrap',
   'http-auth-interceptor'
 ])
   .config(function ($routeProvider, $locationProvider) {
