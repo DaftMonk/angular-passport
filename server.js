@@ -6,7 +6,8 @@ var express = require('express'),
     passport = require('passport'),
     path = require('path'),
     fs = require('fs'),
-    mongoStore = require('connect-mongo')(express);
+    mongoStore = require('connect-mongo')(express),
+    config = require('./lib/config/config');
 
 var app = express();
 
@@ -50,7 +51,7 @@ app.use(express.methodOverride());
 app.use(express.session({
   secret: 'MEAN',
   store: new mongoStore({
-    db: db.connection.db,
+    url: config.db,
     collection: 'sessions'
   })
 }));
