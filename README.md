@@ -1,8 +1,6 @@
 Angular-Passport
 ================
 
-## Overview
-
 An AngularJS application that uses Express, Passport, MongoDB, and Mongoose. Demonstrating: 
 
 * Authentication using Passport
