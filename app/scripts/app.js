@@ -5,7 +5,8 @@ angular.module('angularPassportApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'http-auth-interceptor'
+  'http-auth-interceptor',
+  'ui.bootstrap'
 ])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
@@ -23,11 +24,11 @@ angular.module('angularPassportApp', [
       })
       .when('/blogs/:blogId/edit', {
         templateUrl: 'partials/blogs/edit.html',
-          controller: 'BlogsCtrl'
+        controller: 'BlogsCtrl'
       })
       .when('/blogs/:blogId', {
         templateUrl: 'partials/blogs/view.html',
-          controller: 'BlogsCtrl'
+        controller: 'BlogsCtrl'
       })
       .when('/login', {
         templateUrl: 'partials/login.html',
