@@ -8,6 +8,7 @@ An AngularJS application that uses Express, Passport, MongoDB. Demonstrating:
 * CRUD interface for creating posts with MongoDB
 * Client validations for account creation including a directive for validating if a username is available.
 * Authorization middleware for checking if you are allowed to edit a post.
+* Unit tests for client code
 
 ## Live Example
 Try out the app: <http://angular-passport.herokuapp.com>
