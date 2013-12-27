@@ -11,7 +11,7 @@ An AngularJS application that uses Express, Passport, MongoDB. Demonstrating:
 * Unit tests for client code
 
 ## Live Example
-Try out the app: <http://angular-passport.herokuapp.com>
+Try out the app: <http://angular-passport.herokuapp.com> (Heroku app may have gone to sleep, reload the page if it doesn't work.)
 
 ## How to use angular-passport
 
