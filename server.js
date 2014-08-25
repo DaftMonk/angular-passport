@@ -49,6 +49,7 @@ app.use(cookieParser());
 // express/mongo session storage
 app.use(session({
   resave: true,
+  saveUninitialized: true,
   secret: 'MEAN',
   store: new MongoStore({
     url: config.db,
