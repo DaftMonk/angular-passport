@@ -2,11 +2,19 @@
 
 // Module dependencies.
 var express = require('express'),
+    favicon = require('serve-favicon'),
+    logger = require('morgan'),
+    methodOverride = require('method-override'),
+    session = require('express-session'),
+    bodyParser = require('body-parser'),
+    multer = require('multer'),
+    errorHandler = require('errorhandler'),
+    cookieParser = require('cookie-parser'),
     http = require('http'),
     passport = require('passport'),
     path = require('path'),
     fs = require('fs'),
-    mongoStore = require('connect-mongo')(express),
+    MongoStore = require('connect-mongo')(session),
     config = require('./lib/config/config');
 
 var app = express();
@@ -23,45 +31,48 @@ fs.readdirSync(modelsPath).forEach(function (file) {
 var pass = require('./lib/config/pass');
 
 // App Configuration
-app.configure('development', function(){
-  app.use(express.static(path.join(__dirname, '.tmp')));
-  app.use(express.static(path.join(__dirname, 'app')));
-  app.use(express.errorHandler());
-  app.set('views', __dirname + '/app/views');
-});
-
-app.configure('production', function(){
-  app.use(express.favicon(path.join(__dirname, 'public', 'favicon.ico')));
-  app.use(express.static(path.join(__dirname, 'public')));
-  app.set('views', __dirname + '/views');
-});
-
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
-app.use(express.logger('dev'));
+if ('development' == app.get('env')) {
+  app.set('views', __dirname + '/app/views');
+} else if ('production' == app.get('env')) {
+  app.set('views', __dirname + '/views');
+  app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+}
+
+app.use(logger('dev'));
+app.use(methodOverride());
 
 // cookieParser should be above session
-app.use(express.cookieParser());
-
-// bodyParser should be above methodOverride
-app.use(express.bodyParser());
-app.use(express.methodOverride());
+app.use(cookieParser());
 
 // express/mongo session storage
-app.use(express.session({
+app.use(session({
+  resave: true,
+  saveUninitialized: true,
   secret: 'MEAN',
-  store: new mongoStore({
+  store: new MongoStore({
     url: config.db,
     collection: 'sessions'
   })
 }));
 
+// bodyParser should be above methodOverride
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(multer());
+
 // use passport session
 app.use(passport.initialize());
 app.use(passport.session());
 
-//routes should be at the last
-app.use(app.router);
+if ('development' == app.get('env')) {
+  app.use(express.static(path.join(__dirname, '.tmp')));
+  app.use(express.static(path.join(__dirname, 'app')));
+  app.use(errorHandler());
+} else if ('production' == app.get('env')) {
+  app.use(express.static(path.join(__dirname, 'public')));
+}
 
 //Bootstrap routes
 require('./lib/config/routes')(app);

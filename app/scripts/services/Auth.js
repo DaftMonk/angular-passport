@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularPassportApp')
-  .factory('Auth', function Auth($location, $rootScope, Session, User, $cookieStore) {
+  .factory('Auth', ['$location', '$rootScope', 'Session', 'User', '$cookieStore', function Auth($location, $rootScope, Session, User, $cookieStore) {
     $rootScope.currentUser = $cookieStore.get('user') || null;
     $cookieStore.remove('user');
 
@@ -78,4 +78,4 @@ angular.module('angularPassportApp')
         });
       }
     };
-  })
+  }]);

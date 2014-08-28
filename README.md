@@ -15,7 +15,12 @@ Try out the app: <http://angular-passport.herokuapp.com> (Heroku app may have go
 
 ## How to use angular-passport
 
-Before you continue, make sure you have MongoDB installed <http://www.mongodb.org/downloads/>. 
+Before you continue, make sure you have the following installed;
+
+* MongoDB <http://www.mongodb.org/downloads/>
+* Ruby <https://www.ruby-lang.org/en/downloads/>
+    * compass (gem install compass) <http://compass-style.org/install/>
+* grunt-cli (npm install -g grunt-cli) <http://gruntjs.com/getting-started>
 
 ### Setup
 Run `npm install`, followed by `bower install` to grab the dependencies.

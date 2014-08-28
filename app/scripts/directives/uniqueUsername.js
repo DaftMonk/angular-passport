@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularPassportApp')
-  .directive('uniqueUsername', function ($http) {
+  .directive('uniqueUsername', ['$http', function ($http) {
     return {
       restrict: 'A',
       require: 'ngModel',
@@ -25,5 +25,4 @@ angular.module('angularPassportApp')
         }, validate);
       }
     };
-  });
-
+  }]);
