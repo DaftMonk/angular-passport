@@ -50,7 +50,18 @@ angular.module('angularPassportApp', [
     $rootScope.$watch('currentUser', function(currentUser) {
       // if no currentUser and on a page that requires authorization then try to update it
       // will trigger 401s if user does not have a valid session
-      if (!currentUser && (['/', '/login', '/logout', '/signup'].indexOf($location.path()) == -1 )) {
+      var isValidPath = false, validPaths = [/^\/$/, /^\/blogs$/, /^\/blogs\/[0-9a-zA-Z]*$/, /^\/login$/, /^\/logout$/, /^\/signup$/];
+      var path = $location.path();
+      // because /blogs/create matches one of the regular expressions, leave isValidPath=false
+      if (path != '/blogs/create') {
+        for (var i = 0; i < validPaths.length; i++) {
+          if (path.search(validPaths[i]) >= 0) {
+            isValidPath = true;
+            break;
+          }
+        }
+      }
+      if (!currentUser && !isValidPath) {
         Auth.currentUser();
       }
     });
