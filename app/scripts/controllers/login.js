@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularPassportApp')
-  .controller('LoginCtrl', function ($scope, Auth, $location) {
+  .controller('LoginCtrl', ['$scope', 'Auth', '$location', function ($scope, Auth, $location) {
     $scope.error = {};
     $scope.user = {};
 
@@ -24,4 +24,4 @@ angular.module('angularPassportApp')
           }
       });
     };
-  });
+  }]);

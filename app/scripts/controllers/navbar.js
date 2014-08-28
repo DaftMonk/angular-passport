@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularPassportApp')
-  .controller('NavbarCtrl', function ($scope, Auth, $location) {
+  .controller('NavbarCtrl', ['$scope', 'Auth', '$location', function ($scope, Auth, $location) {
     $scope.menu = [{
       "title": "Blogs",
       "link": "blogs"
@@ -19,4 +19,4 @@ angular.module('angularPassportApp')
         }
       });
     };
-  });
+  }]);

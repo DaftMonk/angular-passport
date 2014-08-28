@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularPassportApp')
-  .controller('SignupCtrl', function ($scope, Auth, $location) {
+  .controller('SignupCtrl', ['$scope', 'Auth', '$location', function ($scope, Auth, $location) {
     $scope.register = function(form) {
       Auth.createUser({
           email: $scope.user.email,
@@ -22,4 +22,4 @@ angular.module('angularPassportApp')
         }
       );
     };
-  });
+  }]);

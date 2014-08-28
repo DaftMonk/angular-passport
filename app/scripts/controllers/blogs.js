@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularPassportApp')
-  .controller('BlogsCtrl', function ($scope, Blogs, $location, $routeParams, $rootScope) {
+  .controller('BlogsCtrl', ['$scope', 'Blogs', '$location', '$routeParams', '$rootScope', function ($scope, Blogs, $location, $routeParams, $rootScope) {
 
     $scope.create = function() {
       var blog = new Blogs({
@@ -46,4 +46,4 @@ angular.module('angularPassportApp')
         $scope.blog = blog;
       });
     };
-  });
+  }]);

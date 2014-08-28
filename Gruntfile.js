@@ -330,7 +330,7 @@ module.exports = function (grunt) {
         html: ['<%= yeoman.views %>/*.html']
       }
     },
-    ngmin: {
+    ngAnnotate: {
       dist: {
         files: [{
           expand: true,
@@ -383,7 +383,7 @@ module.exports = function (grunt) {
     'concurrent:dist',
     'autoprefixer',
     'concat',
-    'ngmin',
+    'ngAnnotate',
     'copy:dist',
     'cdnify',
     'cssmin',

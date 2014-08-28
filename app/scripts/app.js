@@ -8,7 +8,7 @@ angular.module('angularPassportApp', [
   'http-auth-interceptor',
   'ui.bootstrap'
 ])
-  .config(function ($routeProvider, $locationProvider) {
+  .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'partials/main.html',
@@ -42,9 +42,9 @@ angular.module('angularPassportApp', [
         redirectTo: '/'
       });
     $locationProvider.html5Mode(true);
-  })
+  }])
 
-  .run(function ($rootScope, $location, Auth) {
+  .run(['$rootScope', '$location', 'Auth', function ($rootScope, $location, Auth) {
 
     //watching the value of the currentUser variable.
     $rootScope.$watch('currentUser', function(currentUser) {
@@ -60,4 +60,4 @@ angular.module('angularPassportApp', [
       $location.path('/login');
       return false;
     });
-  });
+  }]);

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularPassportApp')
-  .factory('Blogs', function ($resource) {
+  .factory('Blogs', ['$resource', function ($resource) {
     return $resource('api/blogs/:blogId', {
       blogId: '@_id'
     }, {
@@ -9,4 +9,4 @@ angular.module('angularPassportApp')
         method: 'PUT'
       }
     });
-  });
+  }]);
